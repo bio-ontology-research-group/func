@@ -35,19 +35,19 @@ go_graph::go_graph( set<string> &nodes, istream &term2term, idmap &idm_ )
 	// read term2term file, create graph
 	while ( term2term ) {
 		// 4 rows, 1 a id, 2 type of relationship, 3 parent, 4 child
-		char s1[20] ;
+		char s1[20000] ;
 
-		term2term.getline( s1, 20, '\t' ) ;
-		term2term.getline( s1, 20, '\t' ) ;
+		term2term.getline( s1, 20000, '\t' ) ;
+		term2term.getline( s1, 20000, '\t' ) ;
 
 
 		// parent id
-		term2term.getline( s1, 20, '\t' ) ;
+		term2term.getline( s1, 20000, '\t' ) ;
 
 		map<string, go_obj*>::const_iterator par = temp_graph.find( s1 ) ;
 		if ( par != temp_graph.end() ) {
 			// child id
-			term2term.getline( s1, 20, '\n' ) ;
+			term2term.getline( s1, 20000, '\n' ) ;
 			string str_s1( s1 ) ;
 			string child_id ;
 			string::size_type tab_pos = str_s1.find( '\t' ) ;
@@ -62,7 +62,7 @@ go_graph::go_graph( set<string> &nodes, istream &term2term, idmap &idm_ )
 			}	
 		} else {
 			// skip rest if the parent node is not part of the graph
-			term2term.getline( s1, 20, '\n' ) ;
+			term2term.getline( s1, 20000, '\n' ) ;
 		}
 	}
 	// rewrite map file because detectedfile has
