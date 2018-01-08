@@ -24,12 +24,12 @@ go_graph::go_graph( set<string> &nodes, istream &term2term, idmap &idm_ )
 		char s1[20] ;
 
 		// skip first 2 columns
-		term2term.getline( s1, 20, '\t' ) ;
-		term2term.getline( s1, 20, '\t' ) ;
+		term2term.getline( s1, 20000, '\t' ) ;
+		term2term.getline( s1, 20000, '\t' ) ;
 
 
 		// parent id
-		term2term.getline( s1, 20, '\t' ) ;
+		term2term.getline( s1, 20000, '\t' ) ;
 
 		/* The format of the term_db_tables has changed in 12.2004. 
 		   a new column appeared in the term2term table. So we have to check
@@ -39,7 +39,7 @@ go_graph::go_graph( set<string> &nodes, istream &term2term, idmap &idm_ )
 		map<string, go_obj*>::const_iterator par = temp_graph.find( s1 ) ;
 		if ( par != temp_graph.end() ) {
 			// child id
-			term2term.getline( s1, 20, '\n' ) ;
+			term2term.getline( s1, 20000, '\n' ) ;
 			string str_s1( s1 ) ;
 			string child_id ;
 			string::size_type tab_pos = str_s1.find( '\t' ) ;
@@ -54,7 +54,7 @@ go_graph::go_graph( set<string> &nodes, istream &term2term, idmap &idm_ )
 			}	
 		} else {
 			// skip rest if the parent node is not part of the graph
-			term2term.getline( s1, 20, '\n' ) ;
+			term2term.getline( s1, 20000, '\n' ) ;
 		}
 	}
 	// rewrite map file because detectedfile has
