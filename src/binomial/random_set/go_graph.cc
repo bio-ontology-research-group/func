@@ -21,7 +21,7 @@ go_graph::go_graph( set<string> &nodes, istream &term2term, idmap &idm_ )
 	while ( term2term ) {
 		// 4 columns, 1 a id, 2 type of relationship, 3 parent, 4 child
 		// new format: 5 col. Last column: 5 "complete"
-		char s1[20] ;
+		char s1[20000] ;
 
 		// skip first 2 columns
 		term2term.getline( s1, 20000, '\t' ) ;
